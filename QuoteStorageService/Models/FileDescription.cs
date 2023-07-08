@@ -1,4 +1,4 @@
-﻿namespace RESTMicroservice.Models;
+﻿namespace QuoteStorageService.Models;
 
 public class FileDescription
 {

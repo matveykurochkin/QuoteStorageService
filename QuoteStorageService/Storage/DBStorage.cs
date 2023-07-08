@@ -1,10 +1,10 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 using NLog;
-using RESTMicroservice.Configuration;
-using RESTMicroservice.Models;
+using QuoteStorageService.Configuration;
+using QuoteStorageService.Models;
 
-namespace RESTMicroservice.Storage;
+namespace QuoteStorageService.Storage;
 
 // ReSharper disable once InconsistentNaming
 public class DBStorage : IStorage
@@ -56,7 +56,7 @@ public class DBStorage : IStorage
         await using var conn = new SqlConnection(_config.ConnectionString);
         await conn.OpenAsync(cancellationToken);
         await using var command = conn.CreateCommand();
-        command.Parameters.Add(new SqlParameter("type", (int)quoteProvider));
+        command.Parameters.Add(new SqlParameter("type", (int)quoteProvider!));
         command.Parameters.Add(new SqlParameter("dateFrom", dateFrom));
         command.Parameters.Add(new SqlParameter("dateTo", dateTo));
         command.CommandText = "GetFileListFromStorage";

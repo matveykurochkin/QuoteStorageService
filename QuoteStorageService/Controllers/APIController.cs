@@ -1,10 +1,10 @@
 ﻿using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
-using RESTMicroservice.Models;
-using RESTMicroservice.Storage;
+using QuoteStorageService.Models;
+using QuoteStorageService.Storage;
 
-namespace RESTMicroservice.Controllers;
+namespace QuoteStorageService.Controllers;
 
 [Route("api")]
 [ApiController]

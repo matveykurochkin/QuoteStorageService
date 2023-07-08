@@ -1,4 +1,4 @@
-﻿namespace RESTMicroservice.Configuration;
+﻿namespace QuoteStorageService.Configuration;
 
 public enum StorageType
 {

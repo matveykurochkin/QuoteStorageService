@@ -1,8 +1,8 @@
 ﻿using NLog;
-using RESTMicroservice.Configuration;
-using RESTMicroservice.Models;
+using QuoteStorageService.Configuration;
+using QuoteStorageService.Models;
 
-namespace RESTMicroservice.Storage;
+namespace QuoteStorageService.Storage;
 
 public class FileSystemStorage : IStorage
 {

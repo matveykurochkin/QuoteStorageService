@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTMicroservice", "RESTMicroservice\RESTMicroservice.csproj", "{BC7977E1-44A2-427C-9BD3-B0F5000508E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuoteStorageService", "QuoteStorageService\QuoteStorageService.csproj", "{BC7977E1-44A2-427C-9BD3-B0F5000508E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

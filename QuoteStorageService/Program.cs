@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Options;
 using NLog.Web;
-using RESTMicroservice.Configuration;
-using RESTMicroservice.Storage;
+using QuoteStorageService.Configuration;
+using QuoteStorageService.Storage;
 
 var builder = WebApplication.CreateBuilder(args);
 

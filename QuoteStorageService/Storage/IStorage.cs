@@ -1,6 +1,6 @@
-﻿using RESTMicroservice.Models;
+﻿using QuoteStorageService.Models;
 
-namespace RESTMicroservice.Storage;
+namespace QuoteStorageService.Storage;
 
 public interface IStorage
 {
