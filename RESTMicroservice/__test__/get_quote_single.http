@@ -1,0 +1,2 @@
+GET http://localhost:5001/api/quoteSingle/1/2023-07-08
+Accept: */*
