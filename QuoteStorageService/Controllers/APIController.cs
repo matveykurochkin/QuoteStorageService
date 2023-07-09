@@ -21,7 +21,6 @@ public class APIController : ControllerBase
 
     /// <summary>
     /// Метод для сохранения файла
-    /// https://stackoverflow.com/questions/51506964/how-to-receive-a-file-in-asp-net-core-controller 
     /// </summary>
     /// <param name="formFile"></param>
     /// <param name="cancellationToken"></param>
@@ -44,7 +43,7 @@ public class APIController : ControllerBase
             if (!formFile.ContentType.Contains("text/csv", StringComparison.OrdinalIgnoreCase))
                 throw new InvalidOperationException("Supports only text/csv content type");
 
-            //Парсим формат файла ShanghaiFuturesExchange_20230708.csv
+            //Парсим формат файла, пример файла: ShanghaiFuturesExchange_20230708.csv
             var fileNameParts =
                 fileName.Split('_', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
             if (fileNameParts.Length != 2)
@@ -105,7 +104,6 @@ public class APIController : ControllerBase
             return NotFound(); //404
         }
 
-        //Заполняем заголовок Content-Type https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Content-Type
         return new FileStreamResult(stream, "text/csv");
     }
 }

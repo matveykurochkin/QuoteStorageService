@@ -34,7 +34,7 @@ public class DBStorage : IStorage
             Logger.Info("File not flound in DB");
         
         Logger.Info("File flound in DB");
-        var contentObj = reader["Content"]; //TODO: подумать как вернуть Stream
+        var contentObj = reader["Content"];
         var stream = new MemoryStream((byte[])contentObj);
         return stream;
     }
