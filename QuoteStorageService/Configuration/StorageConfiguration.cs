@@ -1,15 +1,11 @@
 ﻿namespace QuoteStorageService.Configuration;
 
+/// <summary>
+/// Перечеслиение, для выбора как будет храниться файлы
+/// </summary>
 public enum StorageType
 {
-    //TODO: комментарии на всех полях и классах
-    /// <summary>
-    /// 
-    /// </summary>
-    DB, 
-    /// <summary>
-    /// 
-    /// </summary>
+    DB,
     FileSystem
 }
 
@@ -20,6 +16,12 @@ public class StorageConfiguration
     public DataBaseConfiguration? DB { get; init; }
     public FileSystemConfiguration? FileSystem { get; init; }
 
+    /// <summary>
+    /// Метод, проверяющий корректные ли параметры переданы в запрос
+    /// </summary>
+    /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     internal bool SelfValidate()
     {
         switch (Type)

@@ -20,13 +20,13 @@ public class APIController : ControllerBase
     }
 
     /// <summary>
-    /// Метод для сохранения файла в базу данных
+    /// Метод для сохранения файла
     /// https://stackoverflow.com/questions/51506964/how-to-receive-a-file-in-asp-net-core-controller 
     /// </summary>
     /// <param name="formFile"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    [HttpPost]
+    [HttpPost("saveFile")]
     public async Task<IActionResult> SaveFile(IFormFile formFile, CancellationToken cancellationToken)
     {
         async Task<BadRequestResult> GetBadRequestResult(string text, CancellationToken ct)
@@ -75,10 +75,14 @@ public class APIController : ControllerBase
     }
 
     [HttpGet("quoteList")]
-    public async Task<IActionResult> GetQuoteList(QuoteProvider? quoteProvider, [FromQuery] DateTime dateFrom,
-        [FromQuery] DateTime dateTo, CancellationToken cancellationToken)
+    public async Task<IActionResult> GetQuoteList(QuoteProvider? quoteProvider, [FromQuery] DateTime dateFrom, [FromQuery] DateTime dateTo, CancellationToken cancellationToken)
     {
-        //TODO: проверить что дата по не меньше чем дата с
+        if (dateFrom > dateTo)
+        {
+            Logger.Info("dateFrom larger dateTo");
+            return BadRequest();
+        }
+
         Logger.Info("Start GetQuoteList");
         var quoteList = await _storage.GetQuoteList(
             quoteProvider
@@ -101,6 +105,7 @@ public class APIController : ControllerBase
             return NotFound(); //404
         }
 
+        //Заполняем заголовок Content-Type https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Content-Type
         return new FileStreamResult(stream, "text/csv");
     }
 }

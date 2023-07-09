@@ -1,2 +1,0 @@
-GET http://localhost:5001/api/quoteList?quoteProvider=1&dateFrom=2023-07-05&dateTo=2023-07-10
-Accept: */*

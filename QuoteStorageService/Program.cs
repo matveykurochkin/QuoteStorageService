@@ -9,7 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
 builder.Host.UseNLog();
 
-//TODO почитать по DependencyIngection контейнер в ASP NET Core
 builder.WebHost.ConfigureKestrel((context, serverOptions) =>
 {
     var kestrelSection = context.Configuration.GetSection("Http");

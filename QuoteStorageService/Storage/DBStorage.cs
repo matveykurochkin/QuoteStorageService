@@ -22,6 +22,7 @@ public class DBStorage : IStorage
     {
         await using var conn = new SqlConnection(_config.ConnectionString);
         await conn.OpenAsync(cancellationToken);
+        
         await using var command = conn.CreateCommand();
         command.Parameters.Add(new SqlParameter("type", (int)quoteProvider));
         command.Parameters.Add(new SqlParameter("date", date));
@@ -31,7 +32,8 @@ public class DBStorage : IStorage
         await using var reader = await command.ExecuteReaderAsync(cancellationToken);
         if (!await reader.ReadAsync(cancellationToken))
             Logger.Info("File not flound in DB");
-
+        
+        Logger.Info("File flound in DB");
         var contentObj = reader["Content"]; //TODO: подумать как вернуть Stream
         var stream = new MemoryStream((byte[])contentObj);
         return stream;
@@ -41,6 +43,7 @@ public class DBStorage : IStorage
     {
         await using var conn = new SqlConnection(_config.ConnectionString);
         await conn.OpenAsync(cancellationToken);
+        
         await using var command = conn.CreateCommand();
         command.Parameters.Add(new SqlParameter("type", (int)quoteProvider));
         command.Parameters.Add(new SqlParameter("date", date));
@@ -55,6 +58,7 @@ public class DBStorage : IStorage
     {
         await using var conn = new SqlConnection(_config.ConnectionString);
         await conn.OpenAsync(cancellationToken);
+        
         await using var command = conn.CreateCommand();
         command.Parameters.Add(new SqlParameter("type", (int)quoteProvider!));
         command.Parameters.Add(new SqlParameter("dateFrom", dateFrom));

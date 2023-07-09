@@ -14,6 +14,13 @@ public class FileSystemStorage : IStorage
         _conf = conf;
     }
 
+    /// <summary>
+    /// Метод, получающий файл по дате
+    /// </summary>
+    /// <param name="quoteProvider"></param>
+    /// <param name="date"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public Task<Stream?> GetFile(QuoteProvider quoteProvider, DateTime date, CancellationToken cancellationToken)
     {
         Logger.Info("Start get file");
@@ -29,6 +36,13 @@ public class FileSystemStorage : IStorage
         return Task.FromResult(null as Stream);
     }
 
+    /// <summary>
+    /// Метод, сохраняющий файл 
+    /// </summary>
+    /// <param name="quoteProvider"></param>
+    /// <param name="date"></param>
+    /// <param name="stream"></param>
+    /// <param name="cancellationToken"></param>
     public async Task SaveFile(QuoteProvider quoteProvider, DateTime date, Stream stream, CancellationToken cancellationToken)
     {
         Logger.Info("Start save file");
@@ -44,6 +58,14 @@ public class FileSystemStorage : IStorage
         Logger.Info("Saved to file: {fullPath}", fullPath);
     }
 
+    /// <summary>
+    /// Метод возвращающий список файлов, лежащих в промежутке указанных дат
+    /// </summary>
+    /// <param name="quoteProvider"></param>
+    /// <param name="dateFrom"></param>
+    /// <param name="dateTo"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     public Task<List<FileDescription>> GetQuoteList(QuoteProvider? quoteProvider, DateTime dateFrom, DateTime dateTo, CancellationToken cancellationToken)
     {
         Logger.Info("Start save file");
